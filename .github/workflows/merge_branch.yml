@@ -1,0 +1,41 @@
+# File: .github/workflows/repo-sync.yml
+name: merge-from-bullfly666
+on:
+  schedule:
+    - cron: '1 */2 * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  push:
+    branches: [ bullfly666 ]
+  repository_dispatch:
+    types: bullfly666
+jobs:
+  repo-sync:
+    env:
+      PAT: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # 我自己同步到gitee使用，其他人可忽略
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          
+      - name: sync bullfly666
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/bullfly666/percollect.git"
+          source_branch: "main"
+          destination_branch: "bullfly666"
+          github_token: ${{ secrets.PAT }}
+
+      - name: Merge main from zero205
+        uses: devmasx/merge-branch@v1.3.1
+        if: env.PAT
+        with:
+          type: now
+          from_branch: bullfly666
+          target_branch: main
+          github_token: ${{ secrets.PAT }}
