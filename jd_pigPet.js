@@ -47,9 +47,9 @@ if ($.isNode()) {
   if (process.env.PIGPETSHARECODE) {
     shareId = process.env.PIGPETSHARECODE
   } else{
-    let res = await getAuthorShareCode('https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/pigPet.json')
+    let res = await getAuthorShareCode('')
     if (!res) {
-      res = await getAuthorShareCode('https://raw.fastgit.org/zero205/updateTeam/main/shareCodes/pigPet.json')
+      res = await getAuthorShareCode('')
     }
     if (res){
       shareId = res[Math.floor((Math.random() * res.length))];
@@ -77,7 +77,7 @@ if ($.isNode()) {
     }
   }
   console.log(`\n======开始大转盘助力======\n`);
-  $.helpId = await getAuthorShareCode('https://raw.fastgit.org/zero205/updateTeam/main/shareCodes/pig.json');
+  $.helpId = await getAuthorShareCode('');
   $.shareCodes = [...$.shareCodes, ...($.helpId || [])]
   for (let j = 0; j < cookiesArr.length; j++) {
     cookie = cookiesArr[j];

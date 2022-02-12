@@ -2,7 +2,7 @@
 #柠檬赚金币
 ##入口为极速版 百元生活费 赚金币 邀请好友
 ##第一次运行可不填写邀请码 运行一次查看自己的邀请码
-##export InviterPin="dS%2Bp85VyjydPuAOOnFP%2Faw%3D%3D"
+##export InviterPin="dD"
 ##助力逻辑：填写你的邀请码变量之后会助力你填写的邀请码，未填写则会默认给【zero205】助力，介意请勿运行
 
 
@@ -63,7 +63,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
       if (InviterPin.length != 0) {
         await help()
       } else {
-        await help2("nano","Sev6JWjut6GyaEHJIWpSQQ%3D%3D")        
+        await help2("nano","")        
       }
     }
   }
