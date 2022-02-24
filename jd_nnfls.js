@@ -90,7 +90,7 @@ if ($.isNode()) {
 
 })().catch((e) => { $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '') }).finally(() => { $.done(); })
 
-function getShareCode(name, author = 'zero205', num = -1, shuffle = false) {
+function getShareCode(name, author = '', num = -1, shuffle = false) {
     return new Promise(resolve => {
         $.get({
             url: ``,
